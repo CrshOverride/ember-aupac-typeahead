@@ -71,11 +71,16 @@ export default Component.extend({
    * @param selection the item selected by the user
    */
   setValue : function(selection) {
+    var typeahead = this.get('_typeahead');
+    if (!typeahead) {
+      return;
+    }
+
     selection = this.get('transformSelection')(selection);
     if(selection) {
-      this.get('_typeahead').typeahead('val', selection);
+      typeahead.typeahead('val', selection);
     } else {
-      this.get('_typeahead').typeahead('val', '');
+      typeahead.typeahead('val', '');
     }
   },
 
